@@ -19,7 +19,7 @@ const Signup = () => {
         e.preventDefault();
         await axios
             .post(
-                'api/users/register',
+                'https://patontas-api.onrender.com/api/users/register',
                 {
                     name,
                     email,

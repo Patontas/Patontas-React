@@ -19,7 +19,7 @@ const UserProfile = () => {
         e.preventDefault();
         await axios
             .put(
-                'api/users/update',
+                'https://patontas-api.onrender.com/api/users/update',
                 {
                     name,
                     email,
