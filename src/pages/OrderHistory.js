@@ -40,11 +40,14 @@ const OrderHistory = () => {
         const fetchOrders = async () => {
             dispatch({ type: 'FETCH_REQUEST' });
             try {
-                const res = await axios.get('/api/orders/fetch-orders', {
-                    headers: {
-                        authorization: `Bearer ${userInfo.token}`,
-                    },
-                });
+                const res = await axios.get(
+                    'https://patontas-api.onrender.com/api/orders/fetch-orders',
+                    {
+                        headers: {
+                            authorization: `Bearer ${userInfo.token}`,
+                        },
+                    }
+                );
                 //console.log(res.data.orders);
                 dispatch({ type: 'FETCH_SUCCESS', payload: res.data.orders });
             } catch (err) {

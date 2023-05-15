@@ -47,7 +47,7 @@ const OrdersTable = () => {
     const handlePayment = async (id) => {
         await axios
             .put(
-                `/api/orders/update/${id}`,
+                `https://patontas-api.onrender.com/api/orders/update/${id}`,
                 { isPaid: true },
                 {
                     headers: {
@@ -66,7 +66,7 @@ const OrdersTable = () => {
     const handleDelivery = async (id) => {
         await axios
             .put(
-                `/api/orders/update/${id}`,
+                `https://patontas-api.onrender.com/api/orders/update/${id}`,
                 { isDelivered: true },
                 {
                     headers: {
@@ -85,11 +85,14 @@ const OrdersTable = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const res = await axios.get('/api/orders/', {
-                    headers: {
-                        authorization: `Bearer ${userInfo.token}`,
-                    },
-                });
+                const res = await axios.get(
+                    'https://patontas-api.onrender.com/api/orders/',
+                    {
+                        headers: {
+                            authorization: `Bearer ${userInfo.token}`,
+                        },
+                    }
+                );
                 setOrders(res.data.orders);
             } catch (err) {
                 getError(err);

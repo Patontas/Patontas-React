@@ -20,11 +20,14 @@ const ProductsTable = (props) => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const res = await axios.get('/api/products/', {
-                    headers: {
-                        authorization: `Bearer ${userInfo.token}`,
-                    },
-                });
+                const res = await axios.get(
+                    'https://patontas-api.onrender.com/api/products/',
+                    {
+                        headers: {
+                            authorization: `Bearer ${userInfo.token}`,
+                        },
+                    }
+                );
                 setProducts(res.data.data);
             } catch (err) {
                 getError(err);

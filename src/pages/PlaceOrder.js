@@ -46,7 +46,7 @@ const PlaceOrder = () => {
         try {
             dispatch({ type: 'CREATE_REQUEST' });
             const result = await axios.post(
-                '/api/orders/create',
+                'https://patontas-api.onrender.com/api/orders/create',
                 {
                     orderItems: cart.cartItems,
                     shippingAddress: cart.shippingAddress,

@@ -69,7 +69,7 @@ const OrderDetails = () => {
             try {
                 dispatch({ type: 'PAY_REQUEST' });
                 const { data } = await axios.put(
-                    `/api/orders/pay/${order._id}`,
+                    `https://patontas-api.onrender.com/api/orders/pay/${order._id}`,
                     details,
                     {
                         headers: {
@@ -92,11 +92,14 @@ const OrderDetails = () => {
         const fetchOrder = async () => {
             dispatch({ type: 'FETCH_REQUEST' });
             try {
-                const res = await axios.get(`/api/orders/fetch-order/${id}`, {
-                    headers: {
-                        authorization: `Bearer ${userInfo.token}`,
-                    },
-                });
+                const res = await axios.get(
+                    `https://patontas-api.onrender.com/api/orders/fetch-order/${id}`,
+                    {
+                        headers: {
+                            authorization: `Bearer ${userInfo.token}`,
+                        },
+                    }
+                );
                 dispatch({ type: 'FETCH_SUCCESS', payload: res.data.order });
             } catch (err) {
                 dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
@@ -106,11 +109,14 @@ const OrderDetails = () => {
         fetchOrder();
         if (!order.isPaid) {
             const loadPayPalScript = async () => {
-                const { data: clientId } = await axios.get(`/api/keys/paypal`, {
-                    headers: {
-                        authorization: `Bearer ${userInfo.token}`,
-                    },
-                });
+                const { data: clientId } = await axios.get(
+                    `https://patontas-api.onrender.com/api/keys/paypal`,
+                    {
+                        headers: {
+                            authorization: `Bearer ${userInfo.token}`,
+                        },
+                    }
+                );
                 paypalDispatch({
                     type: 'resetOptions',
                     value: {

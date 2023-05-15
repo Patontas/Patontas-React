@@ -17,11 +17,14 @@ const UserTable = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const res = await axios.get('/api/users/fetch-users', {
-                    headers: {
-                        authorization: `Bearer ${userInfo.token}`,
-                    },
-                });
+                const res = await axios.get(
+                    'https://patontas-api.onrender.com/api/users/fetch-users',
+                    {
+                        headers: {
+                            authorization: `Bearer ${userInfo.token}`,
+                        },
+                    }
+                );
                 setUsers(res.data.users);
             } catch (err) {
                 getError(err);

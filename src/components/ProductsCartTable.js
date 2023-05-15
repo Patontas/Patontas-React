@@ -12,7 +12,9 @@ const ProductsCartTable = () => {
     } = state;
 
     const updateCartHandler = async (item, quantity) => {
-        const { data } = await axios.get(`/api/products/${item._id}`);
+        const { data } = await axios.get(
+            `https://patontas-api.onrender.com/api/products/${item._id}`
+        );
         if (data.countInStock < quantity) {
             window.alert('Product out of stock');
             return;

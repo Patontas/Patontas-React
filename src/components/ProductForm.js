@@ -35,12 +35,16 @@ const ProductForm = (props) => {
         const formData = new FormData(form);
         if (action === 'save') {
             await axios
-                .post('/api/products/save', formData, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                        authorization: `Bearer ${userInfo.token}`,
-                    },
-                })
+                .post(
+                    'https://patontas-api.onrender.com/api/products/save',
+                    formData,
+                    {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            authorization: `Bearer ${userInfo.token}`,
+                        },
+                    }
+                )
                 .then((res) => {
                     alert(res.data.msg);
                 })
@@ -51,12 +55,16 @@ const ProductForm = (props) => {
             props.contentChange('productsList');
         } else if (action === 'update') {
             await axios
-                .put(`/api/products/update/${product._id}`, formData, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                        authorization: `Bearer ${userInfo.token}`,
-                    },
-                })
+                .put(
+                    `https://patontas-api.onrender.com/api/products/update/${product._id}`,
+                    formData,
+                    {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            authorization: `Bearer ${userInfo.token}`,
+                        },
+                    }
+                )
                 .then((res) => {
                     alert(res.data.msg);
                 })
