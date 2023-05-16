@@ -18,16 +18,12 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         await axios
-            .post(
-                'https://patontas-api.onrender.com/api/users/register',
-                {
-                    name,
-                    email,
-                    password,
-                    confirmPass,
-                },
-                { withCredentials: true }
-            )
+            .post('https://patontas-api.onrender.com/api/users/register', {
+                name,
+                email,
+                password,
+                confirmPass,
+            })
             .then((res) => {
                 alert('User Login successfully');
                 ctxDispatch({
