@@ -31,11 +31,14 @@ const OrdersTable = () => {
 
     const deleteOrder = async (id) => {
         await axios
-            .delete(`api/orders/delete/${id}`, {
-                headers: {
-                    authorization: `Bearer ${userInfo.token}`,
-                },
-            })
+            .delete(
+                `https://patontas-api.onrender.com/api/orders/delete/${id}`,
+                {
+                    headers: {
+                        authorization: `Bearer ${userInfo.token}`,
+                    },
+                }
+            )
             .then((res) => {
                 alert('User Deleted Successfully');
             })
