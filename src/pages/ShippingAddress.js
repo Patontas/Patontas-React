@@ -21,7 +21,7 @@ const ShippingAddress = () => {
     const [country, setCountry] = useState(shippingAddress.country || '');
 
     const [paymentMethodName, setPaymentMethodName] = useState(
-        paymentMethod || 'PayPal'
+        paymentMethod || 'nequi'
     );
 
     const handleSubmit = (e) => {
@@ -118,35 +118,37 @@ const ShippingAddress = () => {
                     <div className="flex text-2xl gap-2">
                         <input
                             type="checkbox"
-                            name="paypal"
-                            id="paypal"
-                            value="PayPal"
-                            checked={paymentMethodName === 'PayPal'}
+                            name="nequi"
+                            id="nequi"
+                            value="nequi"
+                            checked={paymentMethodName === 'nequi'}
                             onChange={(e) =>
                                 setPaymentMethodName(e.target.value)
                             }
                             className="border rounded-lg bg-gray-50 p-3"
                         />
-                        <label htmlFor="paypal" className="my-2">
-                            PayPal
+                        <label htmlFor="nequi" className="my-2">
+                            NEQUI
                         </label>
                     </div>
-                    <div className="flex text-2xl gap-2">
-                        <input
-                            type="checkbox"
-                            name="stripe"
-                            id="stripe"
-                            value="Stripe"
-                            checked={paymentMethodName === 'Stripe'}
-                            onChange={(e) =>
-                                setPaymentMethodName(e.target.value)
-                            }
-                            className="border rounded-lg bg-gray-50 p-3"
-                        />
-                        <label htmlFor="stripe" className="my-2">
-                            Stripe
-                        </label>
-                    </div>
+                    {city.toLowerCase() === 'valledupar' && (
+                        <div className="flex text-2xl gap-2">
+                            <input
+                                type="checkbox"
+                                name="efectivo"
+                                id="efectivo"
+                                value="efectivo"
+                                checked={paymentMethodName === 'efectivo'}
+                                onChange={(e) =>
+                                    setPaymentMethodName(e.target.value)
+                                }
+                                className="border rounded-lg bg-gray-50 p-3"
+                            />
+                            <label htmlFor="efectivo" className="my-2">
+                                Contra Entrega (Solo Valledupar)
+                            </label>
+                        </div>
+                    )}
                     <button
                         type="submit"
                         className="rounded-lg border hover:bg-blue-500 bg-yellow py-3 px-8 
